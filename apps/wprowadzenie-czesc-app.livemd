@@ -1,0 +1,29 @@
+<!-- livebook:{"app_settings":{"access_type":"public","output_type":"rich","slug":"koderki-start"}} -->
+
+# Cześć 😀
+
+## Wprowadzenie
+
+```elixir
+Kino.Shorts.markdown("""
+Witaj w programie Koderki! Pokażemy Ci jak działają otaczające nas technologie komputerowe, żebyś mogła sama decydować jak je wykorzystać.
+
+Zrozumienie jak technologie komputerowe mogą pozytywnie wpływać na otaczający nas świat, daje ogromną motywację do nauki.
+
+W Koderkach znajdziesz wszystko, czego potrzebujesz, aby zmieniać świat na lepsze.
+
+Zostań koderką i #ZmieniajŚwiatKodując!
+
+
+<div style="display: flex; align-items: center; width: 100%; justify-content: space-between; font-size: 1rem; color: #61758a; background-color: #f0f5f9; height: 4rem; padding: 0 1rem; border-radius: 1rem;">
+<div style="display: flex;">
+<i style="display: flex;" class="ri-arrow-left-fill"></i>
+<a style="display: flex; color: #61758a; margin-left: 1rem;" href="https://koderki.pl">Wróć na stronę koderki.pl</a>
+</div>
+<div style="display: flex;">
+<a style="display: flex; color: #61758a; margin-right: 1rem;" href="wprowadzenie-livebook.livemd">Rozpocznij</a>
+<i class="ri-arrow-right-fill"></i>
+</div>
+</div>
+""")
+```
