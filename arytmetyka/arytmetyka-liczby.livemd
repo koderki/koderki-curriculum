@@ -1,0 +1,25 @@
+<!-- livebook:{"file_entries":[{"name":"arytmetyka-dzialania.jpg","type":"attachment"}]} -->
+
+# Arytmetyka - Liczby
+
+## Liczby i działania
+
+Od pierwszej klasy uczysz się zapisywania liczb i działań w zeszycie do matematyki. Na przykład tak zapisujesz dodawanie i odejmowanie:
+
+![](files/arytmetyka-dzialania.jpg "Działania dodawania i odejmowania w zeszycie")
+
+<!-- livebook:{"break_markdown":true} -->
+
+Jeżeli działania na liczbach zapiszemy w komputrze, wtedy komputer może obliczyć wynik.
+
+Poniżej zapisaliśmy jedno z działań z zeszytu. Najedź na nie kursorem myszy. Pojawi się przycisk <i class="ri-play-circle-fill"></i>&nbsp;**Evaluate**. Naciśnij go.
+
+```elixir
+3 + 4
+```
+
+Teraz sama spróbuj wpisać drugie działanie z zeszytu i sprawdź, czy komputer dobrze obliczy wynik.
+
+```elixir
+12 - 1
+```
