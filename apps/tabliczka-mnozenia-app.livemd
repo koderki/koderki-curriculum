@@ -1,0 +1,81 @@
+<!-- livebook:{"app_settings":{"access_type":"public","multi_session":true,"output_type":"rich","show_existing_sessions":false,"slug":"tabliczka-mnozenia"}} -->
+
+# Tabliczka mnożenia
+
+## Gra w obliczanie iloczynów
+
+```elixir
+a = :rand.uniform(10)
+b = :rand.uniform(10)
+product = a * b
+```
+
+```elixir
+frame = Kino.Frame.new()
+```
+
+```elixir
+Kino.Frame.render(
+  frame,
+  Kino.Markdown.new("Oblicz iloczyn liczb `#{a}` i `#{b}`.")
+)
+```
+
+```elixir
+inputs = [number: Kino.Input.text("Wpisz wynik")]
+
+form = Kino.Control.form(inputs, submit: "Sprawdź", reset_on_submit: [:number])
+```
+
+```elixir
+check_guess = fn
+  guess, product when guess == product ->
+    "**Brawo! Wynik to `#{guess}`.**"
+
+  guess, _number ->
+    "**`#{guess}` to zła odpowiedź.**"
+end
+
+create_prompt = fn
+  true, _ -> " Koniec gry."
+  false, 2 -> " Została ostatnia próba."
+  false, n -> " Możesz jeszcze zgadywać #{3 - n} razy."
+end
+
+Kino.listen(
+  form,
+  {1, product},
+  fn %{data: %{number: number}}, {counter, random} ->
+    case Integer.parse(number) do
+      {guess, _} ->
+        text = check_guess.(guess, random)
+        gameover? = guess == random or counter == 3
+        prompt = create_prompt.(gameover?, counter)
+
+        content = Kino.Markdown.new(text <> prompt)
+        Kino.Frame.append(frame, content)
+
+        if gameover? do
+          content = Kino.Markdown.new("Za chwilę gra się zresetuje.")
+          Kino.Frame.append(frame, content)
+
+          Process.sleep(7_000)
+
+          a = :rand.uniform(10)
+          b = :rand.uniform(10)
+          product = a * b
+          content = Kino.Markdown.new("Oblicz iloczyn liczb `#{a}` i `#{b}`.")
+          Kino.Frame.render(frame, content)
+          {:cont, {1, product}}
+        else
+          {:cont, {counter + 1, random}}
+        end
+
+      :error ->
+        content = Kino.Markdown.new("Wpisz liczbę.")
+        Kino.Frame.append(frame, content)
+        {:cont, {counter, random}}
+    end
+  end
+)
+```
